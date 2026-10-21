@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Productos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; color: #333; }
+        h1 { color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #fff; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        a.btn { background: #2ecc71; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; }
+        a.btn-edit { background: #f39c12; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; }
+        a.btn-del { background: #e74c3c; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Productos</h1>
+    <br>
+    <a href="{% url 'crear_producto' %}" class="btn">+ Nuevo Producto</a>
+    <br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Email Proveedor</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in productos %}
+            <tr>
+                <td>{{ p.nombre }}</td>
+                <td>${{ p.precio }}</td>
+                <td>{{ p.email_proveedor }}</td>
+                <td>
+                    <a href="{% url 'editar_producto' p.id %}" class="btn-edit">Editar</a>
+                    <a href="{% url 'eliminar_producto' p.id %}" class="btn-del">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" style="text-align: center;">No hay productos registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
