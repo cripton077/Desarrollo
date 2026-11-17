@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b$l%jmp9d#%*kthmug4p3slp9vb2&+*i&*=poq13i76+r=e!12'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['krok.pythonanywhere.com', 'localhost', '127.0.0.1']
 
@@ -119,6 +119,23 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+
+
+SESSION_COOKIE_SECURE = False  
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+
+
+
+X_FRAME_OPTIONS = 'DENY'
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+
+
+
 
 
 # Static files (CSS, JavaScript, Images)

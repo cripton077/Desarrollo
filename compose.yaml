@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: django_crud_seguro
+    restart: always
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      - DEBUG=False
+      - SECRET_KEY=django-insecure-cambiar-clave-para-produccion
+      - ALLOWED_HOSTS=127.0.0.1,localhost
+    volumes:
+      - .:/app
